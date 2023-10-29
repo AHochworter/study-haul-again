@@ -1,10 +1,13 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
+const knex = require('./knex');
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 8080);
 app.locals.title = 'Study-Haul';
 
 app.use(express.json());
+app.use(cors());
 
 app.locals.questions = [
   {
@@ -33,9 +36,10 @@ app.locals.questions = [
   },
 ];
 
-app.get('/api/v1/questions', (request, response) => {
-  const questions = app.locals.questions;
-  response.json({ questions });
+//We might need to come back after and change this to study-haul
+app.get('/api/v1/questions', async (request, response) => {
+  const questions = await knex.select().from('questions');
+  response.status(200).json(questions);
 });
 
 app.get('/api/v1/questions/:id', (request, response) => {
@@ -43,7 +47,7 @@ app.get('/api/v1/questions/:id', (request, response) => {
   console.log('paramsID: ', id);
 
   const foundQuestion = app.locals.questions.find(
-    question => question.id === id
+    (question) => question.id === id
   );
   if (foundQuestion) {
     console.log('foundQuestion: ', foundQuestion);
