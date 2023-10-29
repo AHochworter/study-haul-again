@@ -4,7 +4,6 @@
  * @type { Object.<string, import("knex").Knex.Config> }
  */
 module.exports = {
-
   // development: {
   //   client: 'sqlite3',
   //   connection: {
@@ -16,16 +15,16 @@ module.exports = {
     client: 'postgresql',
     connection: {
       database: 'study_haul',
-      user:     'janmcsorley',
-      password: 'null'
+      user: 'annhochworter',
+      password: 'null',
     },
     pool: {
       min: 2,
-      max: 10
+      max: 10,
     },
     migrations: {
-      tableName: 'knex_migrations'
-    }
+      tableName: 'knex_migrations',
+    },
   },
 
   production: {
@@ -38,11 +37,10 @@ module.exports = {
     },
     pool: {
       min: 2,
-      max: 10
+      max: 10,
     },
     migrations: {
-      tableName: 'knex_migrations'
-    }
-  }
-
+      tableName: 'knex_migrations',
+    },
+  },
 };
