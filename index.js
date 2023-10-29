@@ -63,6 +63,7 @@ app.get('/', (request, response) => {
 
 app.listen(app.get('port'), () => {
   console.log(
-    `${app.locals.title} is running on http://localhost:${app.get('port')}.`
+    `${app.locals.title} is running on https://study-haul-api.vercel.app/:${app.get('port')}.`
+    // `${app.locals.title} is running on http://localhost:${app.get('port')}.`
   );
 });
