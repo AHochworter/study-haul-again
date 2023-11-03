@@ -31,20 +31,21 @@ app.get('/api/v1/questions', async (request, response) => {
 
 
 //THIS IS NOT WORKING FOR DATA OTHER THAN app.locals
-// app.get('/api/v1/questions/:id', (request, response) => {
-//   const id = request.params.id;
-//   console.log('paramsID: ', id);
-
-//   const foundQuestion = app.locals.questions.find(
-//     question => question.id === id
-//   );
-//   if (foundQuestion) {
-//     console.log('foundQuestion: ', foundQuestion);
-//     response.status(200).json(foundQuestion);
-//   } else {
-//     return response.status(404).send('Page not found.');
-//   }
-// });
+app.get('/api/v1/questions/:id', async(request, response) => {
+  const id = request.params.id;
+  console.log('paramsID: ', id);
+  try {
+    const foundQuestion = await knex('questions').where('id', id).first()
+    if (foundQuestion) {
+      console.log('foundQuestion: ', foundQuestion);
+      response.status(200).json(foundQuestion);
+    } else {
+      return response.status(404).send('Page not found.');
+    }
+  }catch(error){
+    response.status(500).json({error:'failed to retrieve questions'})
+  }
+});
 
 app.get('/', (request, response) => {
   response.send('Oh hey Study Haul');
