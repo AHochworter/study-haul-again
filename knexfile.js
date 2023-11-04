@@ -1,4 +1,3 @@
-// Update with your config settings.
 
 /**
  * @type { Object.<string, import("knex").Knex.Config> }
@@ -24,12 +23,10 @@ module.exports = {
   production: {
     client: 'postgresql',
     connection: {
-      // connectionString: process.env.DATABASE_URL,
       ssl: {
         sslmode: 'require',
       },
       port: 5432,
-      // host: process.env.POSTGRES_HOST,
       host: 'ep-dawn-hill-07407845.us-east-1.postgres.vercel-storage.com',
       user: 'default',
       password: 'RlFApE53SLkM',

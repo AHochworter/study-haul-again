@@ -9,7 +9,6 @@ app.locals.title = 'Study-Haul-2';
 app.use(express.json());
 app.use(cors());
 
-//THIS IS NOT WORKING YET. WHY?
 app.get('/api/v1/questions', async (request, response) => {
   try{
     const questions = await knex.select().from('questions');
@@ -19,18 +18,13 @@ app.get('/api/v1/questions', async (request, response) => {
   }
 });
 
-//ADDITIONAL CODE OPTION FROM ANNA
-// app.get('/api/v1/questions', (request, response) => {
-//   database('questions')
-//     .select()
-//     .then(data => {
-//       response.json({ data });
-//     });
-// });
-// console.log('get 1');
+// INFORMATION FOR DEBUGGING:  go to /api/v1/debug upon deployment to see the environment
 
+app.get('/api/v1/debug', async (request, response) => {
+  const result = process.env
+  response.status(200).json(result)
+})
 
-//THIS IS NOT WORKING FOR DATA OTHER THAN app.locals
 app.get('/api/v1/questions/:id', async(request, response) => {
   const id = request.params.id;
   console.log('paramsID: ', id);
