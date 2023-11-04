@@ -19,6 +19,11 @@ app.get('/api/v1/questions', async (request, response) => {
   }
 });
 
+// got to /api/v1/debug upon deployment to see the environment
+app.get('/api/v1/debug', async (request, response) => {
+  const result = process.env
+  response.status(200).json(result)
+})
 //ADDITIONAL CODE OPTION FROM ANNA
 // app.get('/api/v1/questions', (request, response) => {
 //   database('questions')
