@@ -8,7 +8,7 @@ module.exports = {
       port: 5432,
       user: 'annhochworter',
       password: 'null',
-      database: 'study-haul-2',
+      database: 'study_haul',
     },
     pool: {
       min: 2,
@@ -22,14 +22,14 @@ module.exports = {
   production: {
     client: 'postgresql',
     connection: {
-      // ssl: {
-      //   sslmode: 'require',
-      // },
-      // port: 5432,
-      // host: 'ep-dawn-hill-07407845.us-east-1.postgres.vercel-storage.com',
-      // user: 'default',
-      // password: 'RlFApE53SLkM',
-      // database: 'verceldb',
+      ssl: {
+        sslmode: 'require',
+      },
+      port: 5432,
+      host: 'ep-shiny-rice-74732739.us-east-1.postgres.vercel-storage.com',
+      user: 'default',
+      password: 'cg2aumS3EyCe',
+      database: 'verceldb',
     },
     pool: {
       min: 2,
